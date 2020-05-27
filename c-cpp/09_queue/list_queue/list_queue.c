@@ -3,7 +3,7 @@
  > Author:  jinshaohui
  > Mail:    jinshaohui789@163.com
  > Time:    18-10-13
- > Desc:    
+ > Desc:
  ************************************************************************/
 #include<stdio.h>
 #include<stdlib.h>
@@ -54,7 +54,7 @@ int list_queue_enqueue(list_queue *queue,int data)
 		return -1;
 	}
 
-	ptmp = (queue_node *)malloc(sizeof(queue_node));
+	ptmp = (queue_node *)malloc(size(queue_node));
 	if (ptmp == NULL)
 	{
 		return -1;
@@ -97,7 +97,7 @@ int list_queue_dequeue(list_queue *queue,int *data)
 		queue->tail = NULL;
 	}
 
-	
+
 	free(ptmp);
 	return 0;
 }
@@ -121,7 +121,7 @@ void list_queue_dump(list_queue*queue)
 		ptmp = ptmp->next;
 	}
 	printf("\r\n---------------------------------\r\n");
-    
+
 	return;
 }
 
