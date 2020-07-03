@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 
 
 @WebServlet(urlPatterns = "/index")
@@ -19,14 +20,35 @@ public class IndexServlet extends HttpServlet {
         resp.setCharacterEncoding("UTF-8");
         resp.setHeader("X-Powered-By", "JavaEE Servlet");
         PrintWriter pw = resp.getWriter();
-        pw.write("<h1> Welcome, " + (user != null ? user : "Guest") + "</h1>");
-        if (user == null) {
-            // 未登录，显示登录链接
-            pw.write("<p><a href=\"/signin\">Sign In</a></p>");
-        } else {
-            // 已登录，显示登出链接
-            pw.write("<p><a href=\"/signout\">Sign Out</a></p>");
+        String lang = parseLanguageFromCookie(req);
+        if (lang.equals("zh")) {
+			pw.write("<h1>你好, " + (user != null ? user : "Guest") + "</h1>");
+			if (user == null) {
+				pw.write("<p><a href=\"/signin\">登录</a></p>");
+			} else {
+				pw.write("<p><a href=\"/signout\">登出</a></p>");
+			}
+		} else {
+			pw.write("<h1>Welcome, " + (user != null ? user : "Guest") + "</h1>");
+			if (user == null) {
+				pw.write("<p><a href=\"/signin\">Sign In</a></p>");
+			} else {
+				pw.write("<p><a href=\"/signout\">Sign Out</a></p>");
+			}
+		}
+		pw.write("<p><a href=\"/pref?lang=en\">English</a> | <a href=\"/pref?lang=zh\">中文</a>");
+		pw.flush();
+    }
+
+    private String parseLanguageFromCookie(HttpServletRequest req) {
+        Cookie[] cookies = req.getCookies();
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals("lang")) {
+                    return cookie.getValue();
+                }
+            }
         }
-        pw.flush();
+        return "en";
     }
 }
