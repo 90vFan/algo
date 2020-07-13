@@ -3,41 +3,41 @@ import java.util.Arrays;
 // package sorts;
 
 public class QuickSort {
-    public static void quickSort(int[] a, int n) {
-        quickSortInternally(a, 0, n - 1);
+    public static void quickSort(int[] arr, int n) {
+        quickSortInternally(arr, 0, n - 1);
     }
 
     /**
      * 递归函数
      */
-    public static void quickSortInternally(int[] a, int p, int r) {
-        if (p >= r) return;
+    public static void quickSortInternally(int[] arr, int leftmark, int rightmark) {
+        if (p >= rightmark) return;
 
-        int q = partition(a, p, r);  // 获得区分点
-        quickSortInternally(a, p, q-1);
-        quickSortInternally(a, q+1, r);
+        int pivot = partition(arr, leftmark, rightmark);  // 获得区分点
+        quickSortInternally(arr, leftmark, pivot-1);      // left half
+        quickSortInternally(arr, pivot+1, rightmark);     // right half
     }
 
-    private static int partition(int[] a, int p, int r) {
-        int pivot = a[r];
-        int i = p;
-        for (int j = p; j < r; ++j) {
-            if (a[j] < pivot) {
+    private static int partition(int[] arr, int leftmark, int rightmark) {
+        int pivot = arr[r];                            // pivot
+        int i = leftmark;                              // i leftmark
+        for (int j = leftmark; j < rightmark; ++j) {   // j 遍历 index
+            if (arr[j] < pivot) {
                 if (i == j) {
-                    ++i;
+                    ++i;                               // 当前值小于 pivot, leftmart 右移1个位置
                 } else {
-                    int tmp = a[i];
-                    a[i++] = a[j];
-                    a[j] = tmp;
+                    int tmp = arr[i];                  // 当前值不小于 pivot, 交换
+                    arr[i++] = arr[j];
+                    arr[j] = tmp;
                 }
             }
         }
 
-        int tmp = a[i];
-        a[i] = a[r];
-        a[r] = tmp;
+        int tmp = arr[i];                              // 把基准值放到正确的位置
+        arr[i] = arr[r];
+        arr[r] = tmp;
 
-        System.out.println("i=" + i + "     " + Arrays.toString(a));
+        System.out.println("i=" + i + "     " + Arrays.toString(arr));
         return i;
     }
 

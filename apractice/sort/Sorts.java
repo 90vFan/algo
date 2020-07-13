@@ -44,9 +44,6 @@ public class Sorts {
         }
     }
 
-    /**
-     * 插入排序
-     */
     public static void selectionSort(int[] a, int n) {
         if (n <= 1) return;
 
@@ -64,6 +61,9 @@ public class Sorts {
         }
     }
 
+    /**
+     * 插入排序
+     */
     public static void insertionSort(int[] a, int n) {
         if (n <= 1) return;
 
