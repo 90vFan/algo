@@ -28,7 +28,7 @@ public class BucketSort {
         // 将数组中值分配到各个桶里, 按大小分桶
         for (int i = 0; i < arr.length; i++) {
             int bucketIndex = (arr[i] - minValue) / bucketSize;
-            if (indexArr[bucketIndex] == buckets[bucketIndex].length) {
+            if (indexArr[bucketIndex] == buckets[bucketIndex].length) {  // indexArr ???
                 ensureCapacity(buckets, bucketIndex);
             }
             buckets[bucketIndex][indexArr[bucketIndex]++] = arr[i];
