@@ -1,6 +1,5 @@
-package com.itranswarp.learnjava.servlet;
+package com.itranswarp.learnjava.bean;
 
-import com.itranswarp.learnjava.servlet.School;
 
 
 public class User {
