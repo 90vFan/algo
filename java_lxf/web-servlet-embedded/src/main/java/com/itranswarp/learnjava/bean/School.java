@@ -1,4 +1,4 @@
-package com.itranswarp.learnjava.servlet;
+package com.itranswarp.learnjava.bean;
 
 public class School {
 

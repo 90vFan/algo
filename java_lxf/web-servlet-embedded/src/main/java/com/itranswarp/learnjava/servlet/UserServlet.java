@@ -1,11 +1,17 @@
-// package com.itranswarp.learnjava.servlet;
+package com.itranswarp.learnjava.servlet;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+
 import java.io.IOException;
 import javax.servlet.http.HttpServlet;
 
+import com.itranswarp.learnjava.bean.School;
+import com.itranswarp.learnjava.bean.User;
 
+@WebServlet(urlPatterns = "/user")
 public class UserServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws
             ServletException, IOException {

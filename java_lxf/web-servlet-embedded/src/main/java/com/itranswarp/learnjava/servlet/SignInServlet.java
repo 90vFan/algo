@@ -1,4 +1,4 @@
-// package com.itranswarp.learnjava.servlet;
+package com.itranswarp.learnjava.servlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
