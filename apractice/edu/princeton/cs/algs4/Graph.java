@@ -232,6 +232,7 @@ public class Graph {
      */
     public String toString() {
         StringBuilder s = new StringBuilder();
+        s.append("Graph G:\n");
         s.append(V + " vertices, " + E + " edges " + NEWLINE);
         for (int v = 0; v < V; v++) {
             s.append(v + ": ");
